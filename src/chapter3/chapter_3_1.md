@@ -1,0 +1,1 @@
+# TODO: Aside on react and state management for this app
