@@ -1,1 +1,1 @@
-# TODO: Registering a user
+# Registering a user

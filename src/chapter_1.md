@@ -10,18 +10,46 @@ connections between two or more clients and the central web server.
 If you're wondering where the name khadga comes from, it's a Sanskrit word meaning sword.  It is
 often referred to in spiritual or mystical concepts as the sword that cuts away illusion.
 
+## Why?
+
+One might ask why go through this?  If the main point of this app is to do a chat application with
+video, there's a dime-a-dozen ready made apps for that.
+
+Basically, I wanted to write a non-trivial application from top to bottom.  A truly _full-stack_
+application where the front end, the back end, the database, the CI deployments, integration with
+IoT sensor data, and the data analysis is all done by one developer (that'd be me, and hopefully you
+the reader as well).
+
+Yes, it's a tall order.  Although the primary purpose is to use this project as a vehicle for
+learning how to do deep learning, my intention is to use khadga as a learning tool.  Not just for
+myself but for others as well.  What I have learned is that most books don't walk you through a
+non-trivial project from beginning to end.  Or, they might show you how to use some framework, but
+not always why.
+
+My hope is that by me forging ahead and suffering the learning pains, others can follow along and
+avoid the mistakes I made.  Because of the pedantic nature of this project, I will endeavor to do
+the following:
+
+- Write documentation for all my code
+- Keep this book up to date
+- Show you every step of building a project (as much as possible)
+  - Writing unit and integration tests
+  - Using CI/CD to build, test, and deploy an application (on openshift)
+- Try not to cut corners (ie, I will try to use `.unwrap()` or `.expect()` as little as I can)
+
 ## What you will learn
 
 This guide will walk you through everything required to develop, test and deploy both the front and
 backend application. This includes:
 
 - How to write an asynchronous web server using rust's warp framework
-- How to use wasm-bindgen, web-sys and js-sys crates to create a wasm npm module
+- How to use wasm-bindgen, web-sys and js-sys crates to create a wasm npm module and publish it
 - How to serve your single page app from the async web server
-- How to deploy your app to Openshift Online using docker and source-2-image
+- How to create a react+redux front end, using WebRTC and WebSockets modules written in webassembly
+- How to deploy your app to Openshift Online using docker
 - How to set up unit and integration tests for the front and back end
-- How to set up a CI pipeline between your deployment and your tests
-  
+- How to set up a CI pipeline between your deployment and your tests using travis-ci
+
 ### What the app does
 
 We will build the functionality of the app slowly in order to make it useful early on, but to build
@@ -35,7 +63,11 @@ First, we will start with a relatively simple chat application.  It will also co
 setting up a database of users and saved chat history.  It will also showcase how to do user
 authentication and authorization.
 
-Second, we will enhance the app so that it will do video as well as text based chatting.  In this
+Next, we will write a webassembly module that interacts with WebRTC and WebSocket APIs.  We will use
+this so that the webassembly can quickly and efficiently store data into tensor format that we can
+hand back to tensorflowjs.
+
+Then, we will enhance the app so that it will do video as well as text based chatting.  In this
 step, we will add a signaling service to the bacnd, so peers can find one another.  Chats can either
 be saved locally or stored on the discovery server. This step will also show how to encrypt the
 streams for end to end encryption.
