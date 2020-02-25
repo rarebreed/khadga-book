@@ -1,4 +1,4 @@
-# Setup
+# Local Setup
 
 Now that you know what you will be building, let's get started setting up all the development
 dependencies.  You'll need to have rust and npm set up as well as a few cargo tools

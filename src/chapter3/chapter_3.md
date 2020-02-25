@@ -21,8 +21,7 @@ Before we get to actually coding up anything, let's think about what we want to 
 how we want the interface to be presented.
 
 - Navbar
-  - Signup
-  - Login
+  - Google Login
   - Settings for app
     - video/audio enumeration
     - chat and appearance

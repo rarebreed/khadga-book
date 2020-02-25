@@ -1,1 +1,1 @@
-# TODO: Registration component
+# Google Authentication component

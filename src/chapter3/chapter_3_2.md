@@ -1,1 +1,1 @@
-# TODO: Navbar component
+# Navbar component
